@@ -7,6 +7,7 @@ package projecteuf5;
 
 import java.text.Normalizer;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
@@ -367,15 +368,38 @@ public class ProjecteUF5 {
                text+= linia + " ";
 
         } while (true);
-        System.out.println(text);
+//        System.out.println(text);
 
-        String[] paraules =text.split(" ");
+        String[] paraules =text.split("\\s+");
         
         
         TreeMap mapa = new TreeMap();
         
-        
+        for (int i = 0; i < paraules.length; i++) {
+            
+            if(mapa.containsKey(paraules[i])){
+                int valor = (Integer)mapa.get(paraules[i]);
+// No és necessari ->  mapa.remove(paraules[i]);
+                mapa.put(paraules[i], ++valor);
+            }else{
+                mapa.put(paraules[i], 1);
+            }
+        }
+//        System.out.println(mapa);
+        System.out.println("Llistat de paraules i nº d'aparicions:");
+        mapa.forEach((key,value) -> System.out.println(key+": "+value));
+//        És l'equivalent a això. Només funciona en Java 8!!
+//        Iterator it = mapa.keySet().iterator();
+//        while(it.hasNext()){
+//            Object key = it.next();
+//            System.out.println(key+": "+mapa.get(key));
+//           
+//        }
+       
     }
+        
+
+
 
 //    public static String eliminaNoLletres(String text) {
 //        StringBuilder textSense = new StringBuilder();

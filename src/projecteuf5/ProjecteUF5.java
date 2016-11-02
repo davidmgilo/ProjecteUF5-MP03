@@ -412,10 +412,10 @@ public class ProjecteUF5 {
         
         Collections.sort(conj, Aliment.CAL_ORDER);
         
-//        Iterator it = conj.iterator();
-//        while(it.hasNext()){
-//            System.out.println(it.next());
-//        }
+        Iterator it = conj.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next());
+        }
 
         System.out.println(conj);
     }

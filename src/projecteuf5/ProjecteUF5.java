@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -356,46 +357,59 @@ public class ProjecteUF5 {
 //        if(matcher.find()) System.out.println("El text complix el patró!");
 //        else System.out.println("El text NO complix el patró!");
 
-//Exercici 2. Col·leccions.
-
-        Scanner entrada = new Scanner(System.in);
-        String text = "";
-        
-        System.out.println("Introduix un text. Acabat en línia buida");
-        do {   
-            String linia = entrada.nextLine();
-            if(linia.isEmpty()) break;
-               text+= linia + " ";
-
-        } while (true);
-//        System.out.println(text);
-
-        String[] paraules =text.split("\\s+");
-        
-        
-        TreeMap mapa = new TreeMap();
-        
-        for (int i = 0; i < paraules.length; i++) {
-            
-            if(mapa.containsKey(paraules[i])){
-                int valor = (Integer)mapa.get(paraules[i]);
-// No és necessari ->  mapa.remove(paraules[i]);
-                mapa.put(paraules[i], ++valor);
-            }else{
-                mapa.put(paraules[i], 1);
-            }
-        }
-//        System.out.println(mapa);
-        System.out.println("Llistat de paraules i nº d'aparicions:");
-        mapa.forEach((key,value) -> System.out.println(key+": "+value));
-//        És l'equivalent a això. Només funciona en Java 8!!
-//        Iterator it = mapa.keySet().iterator();
-//        while(it.hasNext()){
-//            Object key = it.next();
-//            System.out.println(key+": "+mapa.get(key));
-//           
+////Exercici 2. Col·leccions.
+//
+//        Scanner entrada = new Scanner(System.in);
+//        String text = "";
+//        
+//        System.out.println("Introduix un text. Acabat en línia buida");
+//        do {   
+//            String linia = entrada.nextLine();
+//            if(linia.isEmpty()) break;
+//               text+= linia + " ";
+//
+//        } while (true);
+////        System.out.println(text);
+//
+//        String[] paraules =text.split("\\s+");
+//        
+//        
+//        TreeMap mapa = new TreeMap();
+//        
+//        for (int i = 0; i < paraules.length; i++) {
+//            
+//            if(mapa.containsKey(paraules[i])){
+//                int valor = (Integer)mapa.get(paraules[i]);
+//// No és necessari ->  mapa.remove(paraules[i]);
+//                mapa.put(paraules[i], ++valor);
+//            }else{
+//                mapa.put(paraules[i], 1);
+//            }
 //        }
-       
+////        System.out.println(mapa);
+//        System.out.println("Llistat de paraules i nº d'aparicions:");
+//        mapa.forEach((key,value) -> System.out.println(key+": "+value));
+////        És l'equivalent a això. Només funciona en Java 8!!
+////        Iterator it = mapa.keySet().iterator();
+////        while(it.hasNext()){
+////            Object key = it.next();
+////            System.out.println(key+": "+mapa.get(key));
+////           
+////        }
+
+//
+
+        List <Aliment> conj = new ArrayList();
+        conj.add(new Aliment("pastanaga","verdura",100));
+        conj.add(new Aliment("carn","carn",300));
+        conj.add(new Aliment("formatge","lactic",250));
+        
+        
+        System.out.println(conj);
+        
+        Collections.sort(conj);
+        
+        System.out.println(conj);
     }
         
 

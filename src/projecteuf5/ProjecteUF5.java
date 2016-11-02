@@ -403,11 +403,14 @@ public class ProjecteUF5 {
         conj.add(new Aliment("pastanaga","verdura",100));
         conj.add(new Aliment("carn","carn",300));
         conj.add(new Aliment("formatge","lactic",250));
-        
-        
+                
         System.out.println(conj);
         
         Collections.sort(conj);
+        
+        System.out.println(conj);
+        
+        Collections.sort(conj, Aliment.CAL_ORDER);
         
         System.out.println(conj);
     }

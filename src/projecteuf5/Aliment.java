@@ -5,6 +5,8 @@
  */
 package projecteuf5;
 
+import java.util.Comparator;
+
 /**
  *
  * @author alumne
@@ -13,6 +15,14 @@ public class Aliment implements Comparable{
     private String nom;
     private String tipus;
     private int cal; 
+    static final Comparator<Aliment> CAL_ORDER =
+            new Comparator<Aliment> (){
+        @Override
+        public int compare(Aliment a1, Aliment a2) {
+            return (a1.getCal() < a2.getCal() ? -1 :
+                    (a1.getCal() == a2.getCal() ? 0 : 1));
+        }
+    };
 
     public Aliment(String nom, String tipus, int cal) {
         this.nom = nom;
@@ -26,6 +36,14 @@ public class Aliment implements Comparable{
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public int getCal() {
+        return cal;
+    }
+
+    public void setCal(int cal) {
+        this.cal = cal;
     }
 
     @Override

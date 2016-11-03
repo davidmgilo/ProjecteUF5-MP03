@@ -397,27 +397,56 @@ public class ProjecteUF5 {
 ////           
 ////        }
 
-//Exercici 3 Collections
+////Exercici 3 Collections
+//
+//        List <Aliment> conj = new ArrayList<>();
+//        conj.add(new Aliment("pastanaga","verdura",100));
+//        conj.add(new Aliment("carn","carn",300));
+//        conj.add(new Aliment("formatge","lactic",250));
+//                
+////        System.out.println(conj);
+//        ProjecteUF5.<Aliment>mostraConjunt(conj);
+//        
+//        Collections.sort(conj);
+//        
+//        ProjecteUF5.<Aliment>mostraConjunt(conj);
+//        
+//        Collections.sort(conj, Aliment.CAL_ORDER);
+//        
+//        ProjecteUF5.<Aliment>mostraConjunt(conj);
+//        
+//        Collections.sort(conj, Aliment.TYPE_ORDER);
+//        
+//        ProjecteUF5.<Aliment>mostraConjunt(conj);
 
-        List <Aliment> conj = new ArrayList<>();
-        conj.add(new Aliment("pastanaga","verdura",100));
-        conj.add(new Aliment("carn","carn",300));
-        conj.add(new Aliment("formatge","lactic",250));
-                
-//        System.out.println(conj);
-        ProjecteUF5.<Aliment>mostraConjunt(conj);
-        
-        Collections.sort(conj);
-        
-        ProjecteUF5.<Aliment>mostraConjunt(conj);
-        
-        Collections.sort(conj, Aliment.CAL_ORDER);
-        
-        ProjecteUF5.<Aliment>mostraConjunt(conj);
-        
-        Collections.sort(conj, Aliment.TYPE_ORDER);
-        
-        ProjecteUF5.<Aliment>mostraConjunt(conj);
+// Exercici 1 genèrics
+
+          UniCapsa <Integer> caixa = new UniCapsa<>();
+          boolean res;
+          
+          System.out.println(caixa.obtenir());
+          System.out.println(caixa.esPlena()?"no buida":"buida");
+          
+          res = caixa.afegir(8); 
+          System.out.println(res?"Afegida": "Ja està plena!!");
+          System.out.println(caixa.obtenir());
+          System.out.println(caixa.esPlena()?"no buida":"buida");
+          
+          res = caixa.afegir(7);
+          System.out.println(res?"Afegida": "Ja està plena!!");
+          System.out.println(caixa.obtenir());
+          System.out.println(caixa.esPlena()?"no buida":"buida");
+          
+          res = caixa.buidar();
+          System.out.println(res?"buidada":"Ja està buida!!");
+          System.out.println(caixa.obtenir());
+          System.out.println(caixa.esPlena()?"no buida":"buida");
+          
+          res = caixa.buidar();
+          System.out.println(res?"buidada":"Ja està buida!!");
+          System.out.println(caixa.obtenir());
+          System.out.println(caixa.esPlena()?"no buida":"buida");
+
 
     }
         

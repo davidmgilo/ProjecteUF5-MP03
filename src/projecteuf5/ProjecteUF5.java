@@ -397,9 +397,9 @@ public class ProjecteUF5 {
 ////           
 ////        }
 
-//
+//Exercici 3 Collections
 
-        List <Aliment> conj = new ArrayList();
+        List <Aliment> conj = new ArrayList<>();
         conj.add(new Aliment("pastanaga","verdura",100));
         conj.add(new Aliment("carn","carn",300));
         conj.add(new Aliment("formatge","lactic",250));

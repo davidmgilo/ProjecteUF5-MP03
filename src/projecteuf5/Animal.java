@@ -19,7 +19,7 @@ public class Animal {
     private Llicencia llic;
     private Propietari prop;
     //Ho faig en ArrayList perquè vull elements repetits i és més ràpid d'accés que una LinkedList.
-    final private List<Aliment> menja = new ArrayList<Aliment>();
+    final private List<Aliment> menja = new ArrayList<>();
 
     public String getNom() {
         return nom;

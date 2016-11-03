@@ -18,6 +18,6 @@ public class Propietari {
     private String cognoms;
     private Habitatge casa;
     // No vull que es repeteixin i vull que estiguin ordenats (per algun camp).
-    private Set mascotes = new TreeSet();
+    private Set <Animal> tecura = new TreeSet<>();
     
 }

@@ -419,33 +419,75 @@ public class ProjecteUF5 {
 //        
 //        ProjecteUF5.<Aliment>mostraConjunt(conj);
 
-// Exercici 1 genèrics
+//// Exercici 1 genèrics
+//
+//          UniCapsa <Integer> caixa = new UniCapsa<>();
+//          boolean res;
+//          
+//          System.out.println(caixa.obtenir());
+//          System.out.println(caixa.esPlena()?"no buida":"buida");
+//          
+//          res = caixa.afegir(8); 
+//          System.out.println(res?"Afegida": "Ja està plena!!");
+//          System.out.println(caixa.obtenir());
+//          System.out.println(caixa.esPlena()?"no buida":"buida");
+//          
+//          res = caixa.afegir(7);
+//          System.out.println(res?"Afegida": "Ja està plena!!");
+//          System.out.println(caixa.obtenir());
+//          System.out.println(caixa.esPlena()?"no buida":"buida");
+//          
+//          res = caixa.buidar();
+//          System.out.println(res?"buidada":"Ja està buida!!");
+//          System.out.println(caixa.obtenir());
+//          System.out.println(caixa.esPlena()?"no buida":"buida");
+//          
+//          res = caixa.buidar();
+//          System.out.println(res?"buidada":"Ja està buida!!");
+//          System.out.println(caixa.obtenir());
+//          System.out.println(caixa.esPlena()?"no buida":"buida");
 
-          UniCapsa <Integer> caixa = new UniCapsa<>();
-          boolean res;
-          
-          System.out.println(caixa.obtenir());
-          System.out.println(caixa.esPlena()?"no buida":"buida");
-          
-          res = caixa.afegir(8); 
-          System.out.println(res?"Afegida": "Ja està plena!!");
-          System.out.println(caixa.obtenir());
-          System.out.println(caixa.esPlena()?"no buida":"buida");
-          
-          res = caixa.afegir(7);
-          System.out.println(res?"Afegida": "Ja està plena!!");
-          System.out.println(caixa.obtenir());
-          System.out.println(caixa.esPlena()?"no buida":"buida");
-          
-          res = caixa.buidar();
-          System.out.println(res?"buidada":"Ja està buida!!");
-          System.out.println(caixa.obtenir());
-          System.out.println(caixa.esPlena()?"no buida":"buida");
-          
-          res = caixa.buidar();
-          System.out.println(res?"buidada":"Ja està buida!!");
-          System.out.println(caixa.obtenir());
-          System.out.println(caixa.esPlena()?"no buida":"buida");
+//Exercici 2 Genèrics
+
+            MultiCapsa mc=new MultiCapsa(new ArrayList()); 
+
+
+            mc.afegir("Primer"); mc.afegir("Segon"); 
+
+            System.out.println((mc.esBuida()?"buida":"no buida")); 
+
+            System.out.println(mc.obtenir()); 
+
+            mc.eliminar(); 
+
+            System.out.println(mc.obtenir()); 
+
+            mc.eliminar(); 
+
+            System.out.println((mc.buidar()?"buidada":"no buidada")); 
+
+            System.out.println((mc.esBuida()?"buida":"no buida")); 
+
+
+            mc=new MultiCapsa(new HashSet()); 
+
+            mc.afegir("Primer"); 
+
+            mc.afegir("Segon"); 
+
+            System.out.println((mc.esBuida()?"buida":"no buida")); 
+
+            System.out.println(mc.obtenir()); 
+
+            mc.eliminar(); 
+
+            System.out.println(mc.obtenir()); 
+
+            mc.eliminar(); 
+
+            System.out.println((mc.buidar()?"buidada":"no buidada")); 
+
+            System.out.println((mc.esBuida()?"buida":"no buida")); 
 
 
     }

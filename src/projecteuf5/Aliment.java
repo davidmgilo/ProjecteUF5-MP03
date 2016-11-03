@@ -23,6 +23,13 @@ public class Aliment implements Comparable{
                     (a1.getCal() == a2.getCal() ? 0 : 1));
         }
     };
+    static final Comparator<Aliment> TYPE_ORDER =
+            new Comparator<Aliment> (){
+        @Override
+        public int compare(Aliment a1, Aliment a2) {
+            return a1.getTipus().compareTo(a2.getTipus());
+        }
+    };
 
     public Aliment(String nom, String tipus, int cal) {
         this.nom = nom;
@@ -44,6 +51,14 @@ public class Aliment implements Comparable{
 
     public void setCal(int cal) {
         this.cal = cal;
+    }
+
+    public String getTipus() {
+        return tipus;
+    }
+
+    public void setTipus(String tipus) {
+        this.tipus = tipus;
     }
 
     @Override

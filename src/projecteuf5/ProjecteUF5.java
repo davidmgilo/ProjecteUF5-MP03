@@ -404,23 +404,30 @@ public class ProjecteUF5 {
         conj.add(new Aliment("carn","carn",300));
         conj.add(new Aliment("formatge","lactic",250));
                 
-        System.out.println(conj);
+//        System.out.println(conj);
+        ProjecteUF5.<Aliment>mostraConjunt(conj);
         
         Collections.sort(conj);
         
-        System.out.println(conj);
+        ProjecteUF5.<Aliment>mostraConjunt(conj);
         
         Collections.sort(conj, Aliment.CAL_ORDER);
         
-        Iterator<Aliment> it = conj.iterator();
+        ProjecteUF5.<Aliment>mostraConjunt(conj);
+        
+        Collections.sort(conj, Aliment.TYPE_ORDER);
+        
+        ProjecteUF5.<Aliment>mostraConjunt(conj);
+
+    }
+        
+    public static <T> void mostraConjunt( List <T> conj){
+        Iterator<T> it = conj.iterator();
+        System.out.println("Conjunt : ");
         while(it.hasNext()){
             System.out.println(it.next());
         }
-
-        System.out.println(conj);
     }
-        
-
 
 
 //    public static String eliminaNoLletres(String text) {

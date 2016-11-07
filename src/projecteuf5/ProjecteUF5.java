@@ -543,12 +543,7 @@ public class ProjecteUF5 {
             MultiCapsa ma=new MultiCapsa <Bicycle>(new ArrayList <Bicycle> ()); 
             ma.afegir(b1);
             ma.afegir(b2);
-            col = ma.<Bicycle>ordenat();
-            Iterator it = col.iterator();
-            while(it.hasNext()){
-                System.out.println(it.next());
-            }
-            
+            System.out.println(ma.<Bicycle>ordenat().toString());
             
 
 

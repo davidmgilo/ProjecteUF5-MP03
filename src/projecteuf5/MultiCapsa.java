@@ -5,6 +5,7 @@
  */
 package projecteuf5;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 /**
  *
  * @author alumne
- * @param <E>
+ * 
  */
 public class MultiCapsa <E> {
     private Collection<E> contingut;
@@ -51,7 +52,7 @@ public class MultiCapsa <E> {
     }
     
     public <E extends Comparable> Collection <E> ordenat (){
-        List col = new java.util.ArrayList(this.contingut);
+        List <E> col = new ArrayList (this.contingut);
         java.util.Collections.sort(col);
         return col;
     }

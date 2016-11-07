@@ -17,7 +17,7 @@ import java.util.regex.PatternSyntaxException;
 
 
 
-class Bicycle implements Comparable{
+class Bicycle implements Comparable <Bicycle>{
     
     int cadence = 0;
     int speed = 0;
@@ -51,7 +51,8 @@ class Bicycle implements Comparable{
     }
 
     
-    public int compareTo(Object o) {
+    @Override
+    public int compareTo(Bicycle o) {
         Bicycle b = (Bicycle) o;
         return (cadence > b.cadence) ? 1 : (cadence < b.cadence) ? -1 : 0 ;
     }

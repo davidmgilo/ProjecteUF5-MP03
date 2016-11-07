@@ -15,6 +15,48 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+
+
+class Bicycle {
+    
+    int cadence = 0;
+    int speed = 0;
+    int gear = 1;
+
+    void changeCadence(int newValue) {
+         cadence = newValue;
+    }
+
+    void changeGear(int newValue) {
+         gear = newValue;
+    }
+
+    void speedUp(int increment) {
+         speed = speed + increment;   
+    }
+
+    void applyBrakes(int decrement) {
+         speed = speed - decrement;
+    }
+
+    void printStates() {
+         System.out.println("cadence:" +
+             cadence + " speed:" + 
+             speed + " gear:" + gear);
+    }
+
+    @Override
+    public String toString() {
+        return "Bicycle{" + "cadence=" + cadence + ", speed=" + speed + ", gear=" + gear + '}';
+    }
+
+    
+//    public int compareTo(Object o) {
+//        Bicycle b = (Bicycle) o;
+//        return (cadence > b.cadence) ? 1 : (cadence < b.cadence) ? -1 : 0 ;
+//    }
+    
+}
 /**
  *
  * @author alumne
@@ -447,7 +489,7 @@ public class ProjecteUF5 {
 //          System.out.println(caixa.obtenir());
 //          System.out.println(caixa.esPlena()?"no buida":"buida");
 
-//Exercici 2 Genèrics
+//Exercici 2 i 3 Genèrics
 
             MultiCapsa mc=new MultiCapsa(new ArrayList()); 
 
@@ -488,6 +530,26 @@ public class ProjecteUF5 {
             System.out.println((mc.buidar()?"buidada":"no buidada")); 
 
             System.out.println((mc.esBuida()?"buida":"no buida")); 
+            
+            mc=new MultiCapsa(new ArrayList()); 
+            mc.afegir("Segon");
+            mc.afegir("Primer");
+            Collection col = mc.ordenat();
+            System.out.println(col);
+            
+            Bicycle b1 = new Bicycle();
+            b1.cadence=23;
+            Bicycle b2 = new Bicycle();
+            MultiCapsa ma=new MultiCapsa <Bicycle>(new ArrayList <Bicycle> ()); 
+            ma.afegir(b1);
+            ma.afegir(b2);
+            col = ma.<Bicycle>ordenat();
+            Iterator it = col.iterator();
+            while(it.hasNext()){
+                System.out.println(it.next());
+            }
+            
+            
 
 
     }

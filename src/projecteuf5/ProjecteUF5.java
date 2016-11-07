@@ -17,7 +17,7 @@ import java.util.regex.PatternSyntaxException;
 
 
 
-class Bicycle {
+class Bicycle implements Comparable{
     
     int cadence = 0;
     int speed = 0;
@@ -51,10 +51,10 @@ class Bicycle {
     }
 
     
-//    public int compareTo(Object o) {
-//        Bicycle b = (Bicycle) o;
-//        return (cadence > b.cadence) ? 1 : (cadence < b.cadence) ? -1 : 0 ;
-//    }
+    public int compareTo(Object o) {
+        Bicycle b = (Bicycle) o;
+        return (cadence > b.cadence) ? 1 : (cadence < b.cadence) ? -1 : 0 ;
+    }
     
 }
 /**
@@ -540,7 +540,7 @@ public class ProjecteUF5 {
             Bicycle b1 = new Bicycle();
             b1.cadence=23;
             Bicycle b2 = new Bicycle();
-            MultiCapsa ma=new MultiCapsa <Bicycle>(new ArrayList <Bicycle> ()); 
+            MultiCapsa <Bicycle> ma=new MultiCapsa <Bicycle>(new ArrayList <Bicycle> ()); 
             ma.afegir(b1);
             ma.afegir(b2);
             System.out.println(ma.<Bicycle>ordenat().toString());

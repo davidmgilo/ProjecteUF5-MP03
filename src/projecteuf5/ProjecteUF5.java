@@ -552,6 +552,8 @@ public class ProjecteUF5 {
 //        llista.readList("filenotexist.txt");
         llista.writeList("filename.txt");
         llista.readList("filenumerical.txt");
+//        llista.writeList("fileio.txt");
+//        llista.readList("fileio.txt");
 
 
     }

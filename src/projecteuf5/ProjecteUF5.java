@@ -5,59 +5,59 @@
  */
 package projecteuf5;
 
-import java.text.Normalizer;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Scanner;
-import java.util.TreeMap;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
+//import java.text.Normalizer;
+//import java.util.Arrays;
+//import java.util.Iterator;
+//import java.util.Scanner;
+//import java.util.TreeMap;
+//import java.util.*;
+//import java.util.regex.Matcher;
+//import java.util.regex.Pattern;
+//import java.util.regex.PatternSyntaxException;
 
 
 
-class Bicycle implements Comparable <Bicycle>{
-    
-    int cadence = 0;
-    int speed = 0;
-    int gear = 1;
-
-    void changeCadence(int newValue) {
-         cadence = newValue;
-    }
-
-    void changeGear(int newValue) {
-         gear = newValue;
-    }
-
-    void speedUp(int increment) {
-         speed = speed + increment;   
-    }
-
-    void applyBrakes(int decrement) {
-         speed = speed - decrement;
-    }
-
-    void printStates() {
-         System.out.println("cadence:" +
-             cadence + " speed:" + 
-             speed + " gear:" + gear);
-    }
-
-    @Override
-    public String toString() {
-        return "Bicycle{" + "cadence=" + cadence + ", speed=" + speed + ", gear=" + gear + '}';
-    }
-
-    
-    @Override
-    public int compareTo(Bicycle o) {
-        Bicycle b = (Bicycle) o;
-        return (cadence > b.cadence) ? 1 : (cadence < b.cadence) ? -1 : 0 ;
-    }
-    
-}
+//class Bicycle implements Comparable <Bicycle>{
+//    
+//    int cadence = 0;
+//    int speed = 0;
+//    int gear = 1;
+//
+//    void changeCadence(int newValue) {
+//         cadence = newValue;
+//    }
+//
+//    void changeGear(int newValue) {
+//         gear = newValue;
+//    }
+//
+//    void speedUp(int increment) {
+//         speed = speed + increment;   
+//    }
+//
+//    void applyBrakes(int decrement) {
+//         speed = speed - decrement;
+//    }
+//
+//    void printStates() {
+//         System.out.println("cadence:" +
+//             cadence + " speed:" + 
+//             speed + " gear:" + gear);
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Bicycle{" + "cadence=" + cadence + ", speed=" + speed + ", gear=" + gear + '}';
+//    }
+//
+//    
+//    @Override
+//    public int compareTo(Bicycle o) {
+//        Bicycle b = (Bicycle) o;
+//        return (cadence > b.cadence) ? 1 : (cadence < b.cadence) ? -1 : 0 ;
+//    }
+//    
+//}
 /**
  *
  * @author alumne
@@ -490,73 +490,73 @@ public class ProjecteUF5 {
 //          System.out.println(caixa.obtenir());
 //          System.out.println(caixa.esPlena()?"no buida":"buida");
 
-//Exercici 2 i 3 Genèrics
-
-            MultiCapsa mc=new MultiCapsa(new ArrayList()); 
-
-
-            mc.afegir("Primer"); mc.afegir("Segon"); 
-
-            System.out.println((mc.esBuida()?"buida":"no buida")); 
-
-            System.out.println(mc.obtenir()); 
-
-            mc.eliminar(); 
-
-            System.out.println(mc.obtenir()); 
-
-            mc.eliminar(); 
-
-            System.out.println((mc.buidar()?"buidada":"no buidada")); 
-
-            System.out.println((mc.esBuida()?"buida":"no buida")); 
-
-
-            mc=new MultiCapsa(new HashSet()); 
-
-            mc.afegir("Primer"); 
-
-            mc.afegir("Segon"); 
-
-            System.out.println((mc.esBuida()?"buida":"no buida")); 
-
-            System.out.println(mc.obtenir()); 
-
-            mc.eliminar(); 
-
-            System.out.println(mc.obtenir()); 
-
-            mc.eliminar(); 
-
-            System.out.println((mc.buidar()?"buidada":"no buidada")); 
-
-            System.out.println((mc.esBuida()?"buida":"no buida")); 
-            
-            mc=new MultiCapsa(new ArrayList()); 
-            mc.afegir("Segon");
-            mc.afegir("Primer");
-            Collection col = mc.ordenat();
-            System.out.println(col);
-            
-            Bicycle b1 = new Bicycle();
-            b1.cadence=23;
-            Bicycle b2 = new Bicycle();
-            MultiCapsa <Bicycle> ma=new MultiCapsa <Bicycle>(new ArrayList <Bicycle> ()); 
-            ma.afegir(b1);
-            ma.afegir(b2);
-            System.out.println(ma.<Bicycle>ordenat().toString());
+////Exercici 2 i 3 Genèrics
+//
+//            MultiCapsa mc=new MultiCapsa(new ArrayList()); 
+//
+//
+//            mc.afegir("Primer"); mc.afegir("Segon"); 
+//
+//            System.out.println((mc.esBuida()?"buida":"no buida")); 
+//
+//            System.out.println(mc.obtenir()); 
+//
+//            mc.eliminar(); 
+//
+//            System.out.println(mc.obtenir()); 
+//
+//            mc.eliminar(); 
+//
+//            System.out.println((mc.buidar()?"buidada":"no buidada")); 
+//
+//            System.out.println((mc.esBuida()?"buida":"no buida")); 
+//
+//
+//            mc=new MultiCapsa(new HashSet()); 
+//
+//            mc.afegir("Primer"); 
+//
+//            mc.afegir("Segon"); 
+//
+//            System.out.println((mc.esBuida()?"buida":"no buida")); 
+//
+//            System.out.println(mc.obtenir()); 
+//
+//            mc.eliminar(); 
+//
+//            System.out.println(mc.obtenir()); 
+//
+//            mc.eliminar(); 
+//
+//            System.out.println((mc.buidar()?"buidada":"no buidada")); 
+//
+//            System.out.println((mc.esBuida()?"buida":"no buida")); 
+//            
+//            mc=new MultiCapsa(new ArrayList()); 
+//            mc.afegir("Segon");
+//            mc.afegir("Primer");
+//            Collection col = mc.ordenat();
+//            System.out.println(col);
+//            
+//            Bicycle b1 = new Bicycle();
+//            b1.cadence=23;
+//            Bicycle b2 = new Bicycle();
+//            MultiCapsa <Bicycle> ma=new MultiCapsa <>(new ArrayList <> ()); 
+//            ma.afegir(b1);
+//            ma.afegir(b2);
+//            System.out.println(ma.<Bicycle>ordenat().toString());
             
 
 
     }
         
-    public static <T> void mostraConjunt( List <T> conj){
-        Iterator<T> it = conj.iterator();
-        System.out.println("Conjunt : ");
-        while(it.hasNext()){
-            System.out.println(it.next());
-        }
-    }
+//    public static <T> void mostraConjunt( List <T> conj){
+//        Iterator<T> it = conj.iterator();
+//        System.out.println("Conjunt : ");
+//        while(it.hasNext()){
+//            System.out.println(it.next());
+//        }
+//    }
 
 
 //    public static String eliminaNoLletres(String text) {

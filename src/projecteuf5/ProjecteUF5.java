@@ -556,7 +556,9 @@ public class ProjecteUF5 {
 ////        llista.readList("fileio.txt");
 
 //Exercici 2 Excepcions
-
+            
+        LlistaDeNumeros2 llista = new LlistaDeNumeros2();
+        llista.readList("filename.txt");
     }
         
 //    public static <T> void mostraConjunt( List <T> conj){

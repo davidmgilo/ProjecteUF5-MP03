@@ -70,6 +70,8 @@ public class LlistaDeNumeros2 {
             System.out.println("Hi ha hagut un error: " + e.getMessage());
         }catch(IOException e){
             System.out.println("Hi ha hagut un error: " + e.getMessage());
+        }catch(NumberFormatException e){
+            System.out.println("El format no és correcte. "+e.getMessage());
         }finally {
             
             try{

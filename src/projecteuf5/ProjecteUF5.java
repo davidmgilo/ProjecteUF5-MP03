@@ -549,6 +549,9 @@ public class ProjecteUF5 {
 //Exercici 1. Excepcions
 
         LlistaDeNumeros1 llista = new LlistaDeNumeros1();
+//        llista.readList("filenotexist.txt");
+        llista.writeList("filename.txt");
+        llista.readList("filenumerical.txt");
 
 
     }

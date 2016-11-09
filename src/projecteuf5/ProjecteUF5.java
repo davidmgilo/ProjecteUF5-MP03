@@ -546,15 +546,16 @@ public class ProjecteUF5 {
 //            ma.afegir(b2);
 //            System.out.println(ma.<Bicycle>ordenat().toString());
   
-//Exercici 1. Excepcions
+////Exercici 1. Excepcions
+//
+//        LlistaDeNumeros1 llista = new LlistaDeNumeros1();
+////        llista.readList("filenotexist.txt");
+//        llista.writeList("filename.txt");
+//        llista.readList("filenumerical.txt");
+////        llista.writeList("fileio.txt");
+////        llista.readList("fileio.txt");
 
-        LlistaDeNumeros1 llista = new LlistaDeNumeros1();
-//        llista.readList("filenotexist.txt");
-        llista.writeList("filename.txt");
-        llista.readList("filenumerical.txt");
-//        llista.writeList("fileio.txt");
-//        llista.readList("fileio.txt");
-
+//Exercici 2 Excepcions
 
     }
         

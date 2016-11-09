@@ -559,6 +559,7 @@ public class ProjecteUF5 {
             
         LlistaDeNumeros2 llista = new LlistaDeNumeros2();
         llista.readList("filename.txt");
+        llista.writeList("filefail.txt");
     }
         
 //    public static <T> void mostraConjunt( List <T> conj){

@@ -39,8 +39,13 @@ public class LlistaDeNumeros2 {
             out.println("Value at: " + i + " = " + list.get(i));
 
         }
+        
+        out.println(list.get(SIZE));
+        
         }catch (IOException e){
             System.out.println("Hi ha hagut un error: " + e.getMessage());
+        }catch (IndexOutOfBoundsException e){
+            System.out.println("S'està accedint a un lloc que no existeix. " + e.getMessage());
         }finally{
             if(out!=null)
                 out.close();

@@ -6,6 +6,8 @@
 package projecteuf5;
 
 //import java.text.Normalizer;
+import java.io.FileNotFoundException;
+
 //import java.util.Arrays;
 //import java.util.Iterator;
 //import java.util.Scanner;
@@ -545,7 +547,7 @@ public class ProjecteUF5 {
 //            ma.afegir(b1);
 //            ma.afegir(b2);
 //            System.out.println(ma.<Bicycle>ordenat().toString());
-  
+
 ////Exercici 1. Excepcions
 //
 //        LlistaDeNumeros1 llista = new LlistaDeNumeros1();
@@ -562,12 +564,15 @@ public class ProjecteUF5 {
 //        llista.writeList("filefail.txt");
 
 //Exercici 3 Excepcions
-
-        LlansaExcepcio4 ll = new LlansaExcepcio4();
-        ll.metode1();
+        LlansaExcepcio5 ll = new LlansaExcepcio5();
+        try {
+            ll.metode1();
+        } catch (FileNotFoundException e) {
+            System.out.println("Fitxer no trobat. " + e.getMessage());
+        }
 
     }
-        
+
 //    public static <T> void mostraConjunt( List <T> conj){
 //        Iterator<T> it = conj.iterator();
 //        System.out.println("Conjunt : ");
@@ -575,8 +580,8 @@ public class ProjecteUF5 {
 //            System.out.println(it.next());
 //        }
 //    }
-
-
+    
+    
 //    public static String eliminaNoLletres(String text) {
 //        StringBuilder textSense = new StringBuilder();
 //        for (int i = 0; i < text.length(); i++) {

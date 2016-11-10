@@ -602,10 +602,10 @@ public class ProjecteUF5 {
 class Pare{
 
     public void method1() 
-//            throws Exception
+            throws Exception
     {}
     
-    // Si només la té el pare, es pot llançar.
+    // Si només la té el pare, es pot llançar. Cal tractar-la als objectes del pare només.
 
 }
 
@@ -619,6 +619,8 @@ class Fill extends Pare{
     {}
     
     // Si només la té el fill, no es pot llançar.
+    
+    //Si tots dos la tenen, si es pot llançar. Cal tractar-la als objectes dels dos tipus.
 
 
 }

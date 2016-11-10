@@ -602,7 +602,7 @@ public class ProjecteUF5 {
 class Pare{
 
     public void method1() 
-            throws Exception
+//            throws Exception
     {}
     
     // Si només la té el pare, es pot llançar.
@@ -615,10 +615,10 @@ class Fill extends Pare{
     @Override
 
     public void method1() 
-//            throws Exception
-    {
-
-    }
+            throws Exception
+    {}
+    
+    // Si només la té el fill, no es pot llançar.
 
 
 }

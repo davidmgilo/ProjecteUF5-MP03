@@ -80,7 +80,7 @@ public class LlistaDeNumeros2 {
         }finally {
             
             try{
-            raf.close();
+                if (raf != null) raf.close();
             }catch(IOException e){
                System.out.println("Hi ha hagut un error: " + e.getMessage());
             }      

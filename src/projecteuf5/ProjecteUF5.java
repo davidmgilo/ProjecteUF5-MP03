@@ -571,12 +571,17 @@ public class ProjecteUF5 {
 //            System.out.println("Fitxer no trobat. " + e.getMessage());
 //        }
 
-//Exercici 4 Excepcions
+////Exercici 4 Excepcions
+//
+//            Fill f = new Fill();
+//            f.method1();
+//            Pare p = new Pare ();
+//            p.method1();
 
-            Fill f = new Fill();
-            f.method1();
-            Pare p = new Pare ();
-            p.method1();
+// Exercici 5 Excepcions
+
+
+
     }
 
 //    public static <T> void mostraConjunt( List <T> conj){
@@ -599,29 +604,29 @@ public class ProjecteUF5 {
 //    }
 }
 
-class Pare{
-
-    public void method1() 
-            throws IOException
-    {}
-    
-    // Si només la té el pare, es pot llançar. Cal tractar-la als objectes del pare només.
-
-}
-
-
-class Fill extends Pare{
-
-    @Override
-
-    public void method1() 
-            throws EOFException
-    {}
-    
-    // Si només la té el fill, no es pot llançar.
-    
-    //Si tots dos la tenen, si es pot llançar. Cal tractar-la als objectes dels dos tipus. 
-    //Si no és la mateixa excepció. Si no tenen relacióno la pot llançar.  El fill pot llançar una excepció filla de la excepció del pare.
-
-
-}
+//class Pare{
+//
+//    public void method1() 
+//            throws IOException
+//    {}
+//    
+//    // Si només la té el pare, es pot llançar. Cal tractar-la als objectes del pare només.
+//
+//}
+//
+//
+//class Fill extends Pare{
+//
+//    @Override
+//
+//    public void method1() 
+//            throws EOFException
+//    {}
+//    
+//    // Si només la té el fill, no es pot llançar.
+//    
+//    //Si tots dos la tenen, si es pot llançar. Cal tractar-la als objectes dels dos tipus. 
+//    //Si no és la mateixa excepció. Si no tenen relacióno la pot llançar.  El fill pot llançar una excepció filla de la excepció del pare.
+//
+//
+//}

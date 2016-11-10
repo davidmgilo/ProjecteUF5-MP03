@@ -584,8 +584,12 @@ public class ProjecteUF5 {
             ex.method1();
         }catch(IOException e){
             System.out.println("Hi ha un error." + e.getMessage());
+            for (int i = 0; i < e.getSuppressed().length; i++) {
+                System.out.println(e.getSuppressed()[i]);
+            }
+            
         }
-        
+
 
 
     }

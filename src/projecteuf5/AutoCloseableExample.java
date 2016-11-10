@@ -13,8 +13,12 @@ import java.io.IOException;
  */
 public class AutoCloseableExample implements AutoCloseable {
 
-    public AutoCloseableExample() throws IOException{
-        throw new IOException();
+    public AutoCloseableExample(){
+        
+    }
+    
+    public void method1 () throws IOException{
+        throw new IOException("Exception from method");
     }
 
     @Override

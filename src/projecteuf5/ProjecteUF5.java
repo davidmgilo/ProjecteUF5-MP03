@@ -579,7 +579,13 @@ public class ProjecteUF5 {
 //            p.method1();
 
 // Exercici 5 Excepcions
-
+    
+        try(AutoCloseableExample  ex = new AutoCloseableExample ()){
+            ex.method1();
+        }catch(IOException e){
+            System.out.println("Hi ha un error." + e.getMessage());
+        }
+        
 
 
     }

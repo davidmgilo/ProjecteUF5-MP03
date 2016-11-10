@@ -563,7 +563,7 @@ public class ProjecteUF5 {
 
 //Exercici 3 Excepcions
 
-        LlansaExcepcio2 ll = new LlansaExcepcio2();
+        LlansaExcepcio3 ll = new LlansaExcepcio3();
         ll.metode1();
 
     }

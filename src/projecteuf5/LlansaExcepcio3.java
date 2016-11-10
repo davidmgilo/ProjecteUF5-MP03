@@ -12,7 +12,7 @@ import java.io.PrintWriter;
  *
  * @author alumne
  */
-public class LlansaExcepcio2 {
+public class LlansaExcepcio3 {
 
     private PrintWriter fitxer = null;
 
@@ -21,14 +21,18 @@ public class LlansaExcepcio2 {
     }
 
     void metode2() {
-        metode3();
+        try {
+            metode3();
+        } catch (FileNotFoundException e) {
+            System.out.println("Fitxer no trobat. " + e.getMessage());
+        }
     }
 
-    void metode3() {
+    void metode3() throws FileNotFoundException {
         try {
             metode4();
         } catch (FileNotFoundException e) {
-            System.out.println("Fitxer no trobat. " + e.getMessage());
+            throw new FileNotFoundException(e.getMessage());
         }
     }
 

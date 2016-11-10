@@ -563,13 +563,15 @@ public class ProjecteUF5 {
 //        llista.readList("filename.txt");
 //        llista.writeList("filefail.txt");
 
-//Exercici 3 Excepcions
-        LlansaExcepcio5 ll = new LlansaExcepcio5();
-        try {
-            ll.metode1();
-        } catch (FileNotFoundException e) {
-            System.out.println("Fitxer no trobat. " + e.getMessage());
-        }
+////Exercici 3 Excepcions
+//        LlansaExcepcio5 ll = new LlansaExcepcio5();
+//        try {
+//            ll.metode1();
+//        } catch (FileNotFoundException e) {
+//            System.out.println("Fitxer no trobat. " + e.getMessage());
+//        }
+
+//Exercici 4 Excepcions
 
     }
 
@@ -591,4 +593,28 @@ public class ProjecteUF5 {
 //        }
 //        return textSense.toString();
 //    }
+}
+
+class Pare{
+
+    public void method1() 
+            throws Exception
+    {}
+    
+    // Si només la té el pare, es pot llançar.
+
+}
+
+
+class Fill extends Pare{
+
+    @Override
+
+    public void method1() 
+//            throws Exception
+    {
+
+    }
+
+
 }

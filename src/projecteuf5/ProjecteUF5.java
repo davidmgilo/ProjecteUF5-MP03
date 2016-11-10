@@ -555,11 +555,17 @@ public class ProjecteUF5 {
 ////        llista.writeList("fileio.txt");
 ////        llista.readList("fileio.txt");
 
-//Exercici 2 Excepcions
-            
-        LlistaDeNumeros2 llista = new LlistaDeNumeros2();
-        llista.readList("filename.txt");
-        llista.writeList("filefail.txt");
+////Exercici 2 Excepcions
+//            
+//        LlistaDeNumeros2 llista = new LlistaDeNumeros2();
+//        llista.readList("filename.txt");
+//        llista.writeList("filefail.txt");
+
+//Exercici 3 Excepcions
+
+        LlansaExcepcio1 ll = new LlansaExcepcio1();
+        ll.metode1();
+
     }
         
 //    public static <T> void mostraConjunt( List <T> conj){

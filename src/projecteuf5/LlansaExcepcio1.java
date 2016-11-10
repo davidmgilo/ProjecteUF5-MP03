@@ -5,6 +5,7 @@
  */
 package projecteuf5;
 
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 /**
@@ -28,6 +29,10 @@ public class LlansaExcepcio1 {
    }
 
    void metode4() {
-      fitxer=new PrintWriter("c:/sortida.txt");
+      try{
+       fitxer=new PrintWriter("c:/sortida.txt");
+      }catch(FileNotFoundException e){
+          System.out.println("Fitxer no trobat. " + e.getMessage());
+      }
    }
 }

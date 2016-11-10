@@ -573,6 +573,10 @@ public class ProjecteUF5 {
 
 //Exercici 4 Excepcions
 
+            Fill f = new Fill();
+            f.method1();
+            Pare p = new Pare ();
+            p.method1();
     }
 
 //    public static <T> void mostraConjunt( List <T> conj){

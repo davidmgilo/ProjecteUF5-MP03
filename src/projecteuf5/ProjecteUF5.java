@@ -591,21 +591,61 @@ public class ProjecteUF5 {
 //            
 //        }
 
-//Exercici 1 Fitxers
+////Exercici 1 Fitxers
+//        
+//        BufferedInputStream in1 = null;
+//        BufferedInputStream in2 = null;
+//        BufferedOutputStream out = null;
+//        
+//        
+//        try{
+//            in1 = new BufferedInputStream (new FileInputStream("origen1.txt"));
+//            in2 = new BufferedInputStream (new FileInputStream("origen2.txt"));
+//            out = new BufferedOutputStream (new FileOutputStream("fusiobytes.txt"));
+//            
+//            int c,d;
+//            String salt = "\n";
+//            
+//            
+//            while((c=in1.read()) != -1){
+//                out.write(c);
+//                
+//                if('\n' == c){
+//                   while((d=in2.read()) != -1){
+//                       out.write(d);
+//                       if('\n' == d) break;
+//                   }  
+//                }
+//            }
+//            while((d=in2.read()) != -1){
+//                       out.write(d);
+//            }
+//            
+//            
+//        }catch(FileNotFoundException e) {
+//            System.out.println("Fitxer not trobat. "+ e.getMessage());
+//            
+//        }finally {
+//            if (in1 != null) {
+//                in1.close();
+//            }
+//            if (in2 != null) {
+//                in2.close();
+//            }
+//            if (out != null) {
+//                out.close();
+//            }
+//        }
+
+// Exercici 2 fitxers
         
-        BufferedInputStream in1 = null;
-        BufferedInputStream in2 = null;
-        BufferedOutputStream out = null;
-        
-        
-        try{
-            in1 = new BufferedInputStream (new FileInputStream("origen1.txt"));
-            in2 = new BufferedInputStream (new FileInputStream("origen2.txt"));
-            out = new BufferedOutputStream (new FileOutputStream("fusiobytes.txt"));
+        try(
+                BufferedReader in1 = new BufferedReader (new FileReader("origen1.txt"));
+                BufferedReader in2 = new BufferedReader (new FileReader("origen2.txt"));
+                BufferedWriter out = new BufferedWriter (new FileWriter("fusiocaracters.txt"));
+            ){
             
-            int c,d;
-            String salt = "\n";
-            
+            int c,d;          
             
             while((c=in1.read()) != -1){
                 out.write(c);
@@ -625,18 +665,8 @@ public class ProjecteUF5 {
         }catch(FileNotFoundException e) {
             System.out.println("Fitxer not trobat. "+ e.getMessage());
             
-        }finally {
-            if (in1 != null) {
-                in1.close();
-            }
-            if (in2 != null) {
-                in2.close();
-            }
-            if (out != null) {
-                out.close();
-            }
         }
-
+        
 
 
     }

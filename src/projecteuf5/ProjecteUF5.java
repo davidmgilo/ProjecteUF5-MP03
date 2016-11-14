@@ -68,8 +68,9 @@ public class ProjecteUF5 {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         // TODO code application logic here
 //        if(args.length == 0){
 //            
@@ -578,16 +579,62 @@ public class ProjecteUF5 {
 //            Pare p = new Pare ();
 //            p.method1();
 
-// Exercici 5 Excepcions
-    
-        try(AutoCloseableExample  ex = new AutoCloseableExample ()){
-            ex.method1();
-        }catch(IOException e){
-            System.out.println("Hi ha un error." + e.getMessage());
-            for (int i = 0; i < e.getSuppressed().length; i++) {
-                System.out.println(e.getSuppressed()[i]);
+//// Exercici 5 Excepcions
+//    
+//        try(AutoCloseableExample  ex = new AutoCloseableExample ()){
+//            ex.method1();
+//        }catch(IOException e){
+//            System.out.println("Hi ha un error." + e.getMessage());
+//            for (int i = 0; i < e.getSuppressed().length; i++) {
+//                System.out.println(e.getSuppressed()[i]);
+//            }
+//            
+//        }
+
+//Exercici 1 Fitxers
+        
+        BufferedInputStream in1 = null;
+        BufferedInputStream in2 = null;
+        BufferedOutputStream out = null;
+        
+        
+        try{
+            in1 = new BufferedInputStream (new FileInputStream("origen1.txt"));
+            in2 = new BufferedInputStream (new FileInputStream("origen2.txt"));
+            out = new BufferedOutputStream (new FileOutputStream("fusiobytes.txt"));
+            
+            int c,d;
+            String salt = new String("\n");
+            
+            
+            while((c=in1.read()) != -1){
+                out.write(c);
+                
+                if(salt.getBytes()[0] == c){
+                   while((d=in2.read()) != -1){
+                       out.write(d);
+                       if(salt.getBytes()[0] == d) break;
+                   }  
+                }
+            }
+            while((d=in2.read()) != -1){
+                       out.write(d);
             }
             
+            
+        }catch(FileNotFoundException e) {
+            System.out.println("Fitxer not trobat. "+ e.getMessage());
+            
+        }finally {
+            if (in1 != null) {
+                in1.close();
+            }
+            if (in2 != null) {
+                in2.close();
+            }
+            if (out != null) {
+                out.close();
+            }
         }
 
 

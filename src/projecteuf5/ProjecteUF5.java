@@ -698,6 +698,8 @@ public class ProjecteUF5 {
 //        while(entrada.hasNext()){
 //            entrada.next()
 //        } TODO
+
+//Exercici 5 fitxers
         
 
 

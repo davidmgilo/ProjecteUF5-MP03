@@ -604,16 +604,16 @@ public class ProjecteUF5 {
             out = new BufferedOutputStream (new FileOutputStream("fusiobytes.txt"));
             
             int c,d;
-            String salt = new String("\n");
+            String salt = "\n";
             
             
             while((c=in1.read()) != -1){
                 out.write(c);
                 
-                if(salt.getBytes()[0] == c){
+                if('\n' == c){
                    while((d=in2.read()) != -1){
                        out.write(d);
-                       if(salt.getBytes()[0] == d) break;
+                       if('\n' == d) break;
                    }  
                 }
             }

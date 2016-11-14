@@ -593,36 +593,36 @@ public class ProjecteUF5 {
 
 ////Exercici 1 Fitxers
 //        
-    
-            try (
-                BufferedInputStream in1 = new BufferedInputStream (new FileInputStream("origen1.txt"));
-                BufferedInputStream in2 = new BufferedInputStream (new FileInputStream("origen2.txt"));
-                BufferedOutputStream out = new BufferedOutputStream (new FileOutputStream("fusiobytes.txt"));
-                ){
-
-            int c,d;
-            String salt = "\n";
-            
-            
-            while((c=in1.read()) != -1){
-                out.write(c);
-                
-                if('\n' == c){
-                   while((d=in2.read()) != -1){
-                       out.write(d);
-                       if('\n' == d) break;
-                   }  
-                }
-            }
-            while((d=in2.read()) != -1){
-                       out.write(d);
-            }
-            
-            
-        }catch(FileNotFoundException e) {
-            System.out.println("Fitxer not trobat. "+ e.getMessage());
-            
-        }
+//    
+//            try (
+//                BufferedInputStream in1 = new BufferedInputStream (new FileInputStream("origen1.txt"));
+//                BufferedInputStream in2 = new BufferedInputStream (new FileInputStream("origen2.txt"));
+//                BufferedOutputStream out = new BufferedOutputStream (new FileOutputStream("fusiobytes.txt"));
+//                ){
+//
+//            int c,d;
+//            String salt = "\n";
+//            
+//            
+//            while((c=in1.read()) != -1){
+//                out.write(c);
+//                
+//                if('\n' == c){
+//                   while((d=in2.read()) != -1){
+//                       out.write(d);
+//                       if('\n' == d) break;
+//                   }  
+//                }
+//            }
+//            while((d=in2.read()) != -1){
+//                       out.write(d);
+//            }
+//            
+//            
+//        }catch(FileNotFoundException e) {
+//            System.out.println("Fitxer not trobat. "+ e.getMessage());
+//            
+//        }
 
 //// Exercici 2 fitxers
 //        
@@ -653,6 +653,40 @@ public class ProjecteUF5 {
 //            System.out.println("Fitxer not trobat. "+ e.getMessage());
 //            
 //        }
+
+//Exercici 3 fitxers
+
+            try(
+                BufferedReader in1 = new BufferedReader (new FileReader("origen1.txt"));
+                BufferedReader in2 = new BufferedReader (new FileReader("origen2.txt"));
+                PrintWriter out = new PrintWriter (new FileWriter("fusiolinies.txt"));
+            ){
+            
+            String c,d;          
+            
+            while((c=in1.readLine()) != null && (d=in2.readLine()) != null){
+                out.println(c);
+                out.println(d);
+
+            }
+            if((c=in1.readLine()) != null){
+                out.println(c);
+                while((c=in1.readLine()) != null){
+                    out.println(c);
+                }
+            }
+            if((d=in2.readLine()) != null){
+                out.println(d);
+                while((d=in2.readLine()) != null){
+                    out.println(d);
+                }
+            }
+            
+            
+        }catch(FileNotFoundException e) {
+            System.out.println("Fitxer not trobat. "+ e.getMessage());
+            
+        }
         
 
 

@@ -654,34 +654,58 @@ public class ProjecteUF5 {
 //            
 //        }
 
-//Exercici 3 fitxers
+////Exercici 3 fitxers
+//
+//            try(
+//                BufferedReader in1 = new BufferedReader (new FileReader("origen1.txt"));
+//                BufferedReader in2 = new BufferedReader (new FileReader("origen2.txt"));
+//                PrintWriter out = new PrintWriter (new FileWriter("fusiolinies.txt"));
+//            ){
+//            
+//            String c,d;          
+//            
+//            while((c=in1.readLine()) != null && (d=in2.readLine()) != null){
+//                out.println(c);
+//                out.println(d);
+//
+//            }
+//            if((c=in1.readLine()) != null){
+//                out.println(c);
+//                while((c=in1.readLine()) != null){
+//                    out.println(c);
+//                }
+//            }
+//            if((d=in2.readLine()) != null){
+//                out.println(d);
+//                while((d=in2.readLine()) != null){
+//                    out.println(d);
+//                }
+//            }
+//            
+//            
+//        }catch(FileNotFoundException e) {
+//            System.out.println("Fitxer not trobat. "+ e.getMessage());
+//            
+//        }
 
-            try(
-                BufferedReader in1 = new BufferedReader (new FileReader("origen1.txt"));
-                BufferedReader in2 = new BufferedReader (new FileReader("origen2.txt"));
-                PrintWriter out = new PrintWriter (new FileWriter("fusiolinies.txt"));
-            ){
-            
-            String c,d;          
-            
-            while((c=in1.readLine()) != null && (d=in2.readLine()) != null){
-                out.println(c);
-                out.println(d);
+//Exercici 4 fitxers
 
-            }
-            if((c=in1.readLine()) != null){
-                out.println(c);
-                while((c=in1.readLine()) != null){
-                    out.println(c);
-                }
-            }
-            if((d=in2.readLine()) != null){
-                out.println(d);
-                while((d=in2.readLine()) != null){
-                    out.println(d);
-                }
-            }
+        try(
+               DataInputStream input = new DataInputStream(new BufferedInputStream(new FileInputStream("notesok")));
+                ){
+            int total = 0;
+            int totalnum = 0;
+            int num;
+            String guio;
             
+            try{
+                while(true){
+//                    num = input.readInt();
+//                    guio = input.readUTF();
+                    System.out.println(input.readInt());
+                }
+            }catch(EOFException e){
+                System.out.println("Sortint del loop");}
             
         }catch(FileNotFoundException e) {
             System.out.println("Fitxer not trobat. "+ e.getMessage());

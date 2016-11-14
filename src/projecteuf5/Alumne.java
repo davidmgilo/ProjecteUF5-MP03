@@ -24,12 +24,13 @@ public class Alumne {
     public Alumne() {
     }
 
-    public Alumne(String nom, String cognom1, String cognom2, Date data, String email) {
+    public Alumne(String nom, String cognom1, String cognom2, Date data, String email, List<String> moduls) {
         this.nom = nom;
         this.cognom1 = cognom1;
         this.cognom2 = cognom2;
         this.data = data;
         this.email = email;
+        this.moduls = moduls;
     }
 
     public String getNom() {

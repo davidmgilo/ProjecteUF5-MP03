@@ -7,6 +7,7 @@ package projecteuf5;
 
 //import java.text.Normalizer;
 import java.io.*;
+//import java.util.Scanner;
 
 //import java.util.Arrays;
 //import java.util.Iterator;
@@ -688,29 +689,15 @@ public class ProjecteUF5 {
 //            
 //        }
 
-//Exercici 4 fitxers
-
-        try(
-               DataInputStream input = new DataInputStream(new BufferedInputStream(new FileInputStream("notesok")));
-                ){
-            int total = 0;
-            int totalnum = 0;
-            int num;
-            String guio;
-            
-            try{
-                while(true){
-//                    num = input.readInt();
-//                    guio = input.readUTF();
-                    System.out.println(input.readInt());
-                }
-            }catch(EOFException e){
-                System.out.println("Sortint del loop");}
-            
-        }catch(FileNotFoundException e) {
-            System.out.println("Fitxer not trobat. "+ e.getMessage());
-            
-        }
+////Exercici 4 fitxers
+//
+//        Scanner entrada = new Scanner(new File("notesok"));
+//        
+//        entrada.useDelimiter(" - ");
+//        
+//        while(entrada.hasNext()){
+//            entrada.next()
+//        } TODO
         
 
 

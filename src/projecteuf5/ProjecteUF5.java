@@ -7,7 +7,12 @@ package projecteuf5;
 
 //import java.text.Normalizer;
 import java.io.*;
-//import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
 
 //import java.util.Arrays;
 //import java.util.Iterator;
@@ -17,9 +22,6 @@ import java.io.*;
 //import java.util.regex.Matcher;
 //import java.util.regex.Pattern;
 //import java.util.regex.PatternSyntaxException;
-
-
-
 //class Bicycle implements Comparable <Bicycle>{
 //    
 //    int cadence = 0;
@@ -71,7 +73,7 @@ public class ProjecteUF5 {
      * @param args the command line arguments
      * @throws java.io.IOException
      */
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
 //        if(args.length == 0){
 //            
@@ -381,7 +383,6 @@ public class ProjecteUF5 {
 //        if (!found) {
 //            System.out.format("No s'han trobat coincidències.%n");
 //        }
-
 //Exercici 9
 //        Scanner entrada = new Scanner(System.in);
 //        String text;
@@ -403,7 +404,6 @@ public class ProjecteUF5 {
 //        Matcher matcher = pattern.matcher(text);
 //        if(matcher.find()) System.out.println("El text complix el patró!");
 //        else System.out.println("El text NO complix el patró!");
-
 ////Exercici 2. Col·leccions.
 //
 //        Scanner entrada = new Scanner(System.in);
@@ -443,7 +443,6 @@ public class ProjecteUF5 {
 ////            System.out.println(key+": "+mapa.get(key));
 ////           
 ////        }
-
 ////Exercici 3 Collections
 //
 //        List <Aliment> conj = new ArrayList<>();
@@ -465,7 +464,6 @@ public class ProjecteUF5 {
 //        Collections.sort(conj, Aliment.TYPE_ORDER);
 //        
 //        ProjecteUF5.<Aliment>mostraConjunt(conj);
-
 //// Exercici 1 genèrics
 //
 //          UniCapsa <Integer> caixa = new UniCapsa<>();
@@ -493,7 +491,6 @@ public class ProjecteUF5 {
 //          System.out.println(res?"buidada":"Ja està buida!!");
 //          System.out.println(caixa.obtenir());
 //          System.out.println(caixa.esPlena()?"no buida":"buida");
-
 ////Exercici 2 i 3 Genèrics
 //
 //            MultiCapsa mc=new MultiCapsa(new ArrayList()); 
@@ -549,7 +546,6 @@ public class ProjecteUF5 {
 //            ma.afegir(b1);
 //            ma.afegir(b2);
 //            System.out.println(ma.<Bicycle>ordenat().toString());
-
 ////Exercici 1. Excepcions
 //
 //        LlistaDeNumeros1 llista = new LlistaDeNumeros1();
@@ -558,13 +554,11 @@ public class ProjecteUF5 {
 //        llista.readList("filenumerical.txt");
 ////        llista.writeList("fileio.txt");
 ////        llista.readList("fileio.txt");
-
 ////Exercici 2 Excepcions
 //            
 //        LlistaDeNumeros2 llista = new LlistaDeNumeros2();
 //        llista.readList("filename.txt");
 //        llista.writeList("filefail.txt");
-
 ////Exercici 3 Excepcions
 //        LlansaExcepcio5 ll = new LlansaExcepcio5();
 //        try {
@@ -572,14 +566,12 @@ public class ProjecteUF5 {
 //        } catch (FileNotFoundException e) {
 //            System.out.println("Fitxer no trobat. " + e.getMessage());
 //        }
-
 ////Exercici 4 Excepcions
 //
 //            Fill f = new Fill();
 //            f.method1();
 //            Pare p = new Pare ();
 //            p.method1();
-
 //// Exercici 5 Excepcions
 //    
 //        try(AutoCloseableExample  ex = new AutoCloseableExample ()){
@@ -591,7 +583,6 @@ public class ProjecteUF5 {
 //            }
 //            
 //        }
-
 ////Exercici 1 Fitxers
 //        
 //    
@@ -624,7 +615,6 @@ public class ProjecteUF5 {
 //            System.out.println("Fitxer not trobat. "+ e.getMessage());
 //            
 //        }
-
 //// Exercici 2 fitxers
 //        
 //        try(
@@ -654,7 +644,6 @@ public class ProjecteUF5 {
 //            System.out.println("Fitxer not trobat. "+ e.getMessage());
 //            
 //        }
-
 ////Exercici 3 fitxers
 //
 //            try(
@@ -688,7 +677,6 @@ public class ProjecteUF5 {
 //            System.out.println("Fitxer not trobat. "+ e.getMessage());
 //            
 //        }
-
 ////Exercici 4 fitxers
 //
 //        Scanner entrada = new Scanner(new File("notesok"));
@@ -698,10 +686,124 @@ public class ProjecteUF5 {
 //        while(entrada.hasNext()){
 //            entrada.next()
 //        } TODO
-
 //Exercici 5 fitxers
+        Scanner entrada = new Scanner(System.in);
         
+        File fitxer = new File("alumnes.dat");
 
+        List<Alumne> alumnes = new ArrayList<>();
+        Iterator<Alumne> it;
+
+        Alumne alumne;
+
+        try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fitxer)));) {
+            try {
+                while (true) {
+                    alumne = (Alumne) in.readObject();
+                    alumnes.add(alumne);
+                }
+            } catch (EOFException e) {
+            } catch (ClassNotFoundException e) {
+                System.out.println("Error en la lectura del fitxer");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("No existeix el fitxer. Es crea de nou al inserir dades.");
+        } finally {
+            int op = -1;
+            while (op != 0) {
+                System.out.println("\nMENU D'OPCIONS");
+                System.out.println("1. Llista els alumnes.");
+                System.out.println("2. Insertar un nou alumne.");
+                System.out.println("Apreta 0 per a sortir.\n");
+                try {
+                    op = Integer.valueOf(entrada.nextLine());
+                    if (op > 2 || op < 0) {
+                        throw new NumberFormatException();
+                    }
+                } catch (NumberFormatException e) {
+                    op = -1;
+                }
+
+                switch (op) {
+                    case 0:
+                        System.out.println("Adeu.");
+                        break;
+                    case 1:
+                        it = alumnes.iterator();
+                        int count = 0;
+                        while (it.hasNext()) {
+                            System.out.println(it.next().toString());
+                            count++;
+                        }
+                        if(count == 0){System.out.println("No hi han alumnes.");}
+                        break;
+                    case 2:
+                        System.out.println("Introdueix les dades del alumne. (Linia en blanc per acabar)");
+                        System.out.print("Nom: ");
+                        String nom = entrada.nextLine();
+                        System.out.print("Primer Cognom: ");
+                        String cognom1 = entrada.nextLine();
+                        System.out.print("Segon Cognom: ");
+                        String cognom2 = entrada.nextLine();
+                        Date data = Calendar.getInstance().getTime();
+                        System.out.print("Email: ");
+                        String email = entrada.nextLine();
+                        alumne = new Alumne(nom,cognom1,cognom2,data,email);
+                        // Evitar problemes
+                        while(!entrada.nextLine().isEmpty()){
+                            email = entrada.nextLine();
+                        }
+                        
+                        System.out.println("Introdueix els moduls cursats. (Linia en blanc per acabar)");
+                        while(true){
+                            String next = entrada.nextLine();
+                            if(next.isEmpty()) break;
+                            alumne.setElement(next);   
+                        }
+                        
+                        
+                        System.out.println("Vols que es guardi al final o que ho sobreescrigui tot ? ( F / S) NOTA: Si no existeix es sobreescriurà de totes maneres.");
+                        String format = null;
+                        do {
+                            format = entrada.nextLine();
+                            if (format.toUpperCase().charAt(0) != 'F' && format.toUpperCase().charAt(0) != 'S') {
+                                System.out.println("Opcio incorrecta (Final o Sobreescriptura).");
+                            }
+                        } while (format.toUpperCase().charAt(0) != 'F' && format.toUpperCase().charAt(0) != 'S');
+                        
+                        ObjectOutputStream out = null;
+
+                        try {
+                            
+                            if (format.charAt(0) == 'F' && fitxer.exists()) {
+                                out = new AppendingObjectOutputStream(new FileOutputStream(fitxer, true));
+                                System.out.println("Afegint...");
+                            } else {
+                                out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fitxer)));
+                                alumnes = new ArrayList<>();
+                                System.out.println("Sobreescrivint...");
+                            }
+                                out.writeObject(alumne);
+                                alumnes.add(alumne);
+                           
+                        } catch (IOException ex) { System.out.println(ex.getMessage());
+                        } finally {
+                            if (out != null) {
+                                try {
+                                    out.close();
+                                } catch (IOException ex) { System.out.println(ex.getMessage());
+                                }
+                            }
+                        }
+                        break;
+                        
+                    default:
+                        System.out.println("Opcio invalida");
+                        break;
+                }
+            }
+
+        }
 
     }
 
@@ -712,8 +814,6 @@ public class ProjecteUF5 {
 //            System.out.println(it.next());
 //        }
 //    }
-    
-    
 //    public static String eliminaNoLletres(String text) {
 //        StringBuilder textSense = new StringBuilder();
 //        for (int i = 0; i < text.length(); i++) {
@@ -751,3 +851,18 @@ public class ProjecteUF5 {
 //
 //
 //}
+class AppendingObjectOutputStream extends ObjectOutputStream {
+
+    public AppendingObjectOutputStream(OutputStream out) throws IOException {
+
+        super(out);
+
+    }
+
+    @Override
+
+    protected void writeStreamHeader() throws IOException {
+        reset();
+    }
+
+}

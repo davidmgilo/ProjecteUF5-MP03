@@ -5,32 +5,33 @@
  */
 package projecteuf5;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
  *
  * @author alumne
  */
-public class Alumne {
+public class Alumne implements Serializable{
     private String nom;
     private String cognom1;
     private String cognom2;
     private Date data;
     private String email;
-    private List<String> moduls = new ArrayList<>();
+    final protected List<String> moduls = new ArrayList<>();
 
     public Alumne() {
     }
 
-    public Alumne(String nom, String cognom1, String cognom2, Date data, String email, List<String> moduls) {
+    public Alumne(String nom, String cognom1, String cognom2, Date data, String email) {
         this.nom = nom;
         this.cognom1 = cognom1;
         this.cognom2 = cognom2;
         this.data = data;
         this.email = email;
-        this.moduls = moduls;
     }
 
     public String getNom() {
@@ -72,14 +73,23 @@ public class Alumne {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public List<String> getModuls() {
-        return moduls;
-    }
-
-    public void setModuls(List<String> moduls) {
-        this.moduls = moduls;
+    
+    public void setElement (String element){
+        moduls.add(element);
     }
     
+    public String getElement(int index){
+       return moduls.get(index);
+    }
+
+    @Override
+    public String toString() {
+        String modul = "";
+        Iterator it = moduls.iterator();
+        while(it.hasNext()){
+            modul += it.next() + " ";
+        }
+        return "Alumne{" + "nom=" + nom + ", cognom1=" + cognom1 + ", cognom2=" + cognom2 + ", data=" + data + ", email=" + email + ", moduls=" + modul + '}';
+    }
     
 }

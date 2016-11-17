@@ -678,132 +678,169 @@ public class ProjecteUF5 {
 //            
 //        }
 ////Exercici 4 fitxers
-//
-//        Scanner entrada = new Scanner(new File("notesok"));
-//        
-//        entrada.useDelimiter(" - ");
-//        
-//        while(entrada.hasNext()){
-//            entrada.next()
-//        } TODO
-//Exercici 5 fitxers
-        Scanner entrada = new Scanner(System.in);
+
+        Scanner entrada = new Scanner(new File("notes.txt"));
         
-        File fitxer = new File("alumnes.dat");
-
-        List<Alumne> alumnes = new ArrayList<>();
-        Iterator<Alumne> it;
-
-        Alumne alumne;
-
-        try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fitxer)));) {
-            try {
-                while (true) {
-                    alumne = (Alumne) in.readObject();
-                    alumnes.add(alumne);
-                }
-            } catch (EOFException e) {
-            } catch (ClassNotFoundException e) {
-                System.out.println("Error en la lectura del fitxer");
+        entrada.useDelimiter("\\s\\p{Punct}?\\s");
+        
+        int total_num = 0;
+        int total = 0;
+        String valor;
+        int valorI;
+        int aprovats = 0;
+        int nDeus = 0;
+        int nZeros = 0;
+        int notes_totals = 0;
+        
+        while(entrada.hasNext()){
+            if(!entrada.hasNextInt()){
+                valor = entrada.next();
+                System.out.println("Nota incorrecta : "+valor);
+            }else{
+                valor = entrada.next();
+                valorI = Integer.valueOf(valor);
+                if(valorI >= 5) aprovats++;
+                if(valorI == 10) nDeus++;
+                if(valorI == 0) nZeros++;
+                notes_totals+=valorI;
+                total_num++;
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("No existeix el fitxer. Es crea de nou al inserir dades.");
-        } finally {
-            int op = -1;
-            while (op != 0) {
-                System.out.println("\nMENU D'OPCIONS");
-                System.out.println("1. Llista els alumnes.");
-                System.out.println("2. Insertar un nou alumne.");
-                System.out.println("Apreta 0 per a sortir.\n");
-                try {
-                    op = Integer.valueOf(entrada.nextLine());
-                    if (op > 2 || op < 0) {
-                        throw new NumberFormatException();
-                    }
-                } catch (NumberFormatException e) {
-                    op = -1;
-                }
-
-                switch (op) {
-                    case 0:
-                        System.out.println("Adeu.");
-                        break;
-                    case 1:
-                        it = alumnes.iterator();
-                        int count = 0;
-                        while (it.hasNext()) {
-                            System.out.println(it.next().toString());
-                            count++;
-                        }
-                        if(count == 0){System.out.println("No hi han alumnes.");}
-                        break;
-                    case 2:
-                        System.out.println("Introdueix les dades del alumne. (Linia en blanc per acabar)");
-                        System.out.print("Nom: ");
-                        String nom = entrada.nextLine();
-                        System.out.print("Primer Cognom: ");
-                        String cognom1 = entrada.nextLine();
-                        System.out.print("Segon Cognom: ");
-                        String cognom2 = entrada.nextLine();
-                        Date data = Calendar.getInstance().getTime();
-                        System.out.print("Email: ");
-                        String email = entrada.nextLine();
-                        alumne = new Alumne(nom,cognom1,cognom2,data,email);
-                        // Evitar problemes
-                        while(!entrada.nextLine().isEmpty()){
-                            email = entrada.nextLine();
-                        }
-                        
-                        System.out.println("Introdueix els moduls cursats. (Linia en blanc per acabar)");
-                        while(true){
-                            String next = entrada.nextLine();
-                            if(next.isEmpty()) break;
-                            alumne.setElement(next);   
-                        }
-                        
-                        
-                        System.out.println("Vols que es guardi al final o que ho sobreescrigui tot ? ( F / S) NOTA: Si no existeix es sobreescriurà de totes maneres.");
-                        String format = null;
-                        do {
-                            format = entrada.nextLine();
-                            if (format.toUpperCase().charAt(0) != 'F' && format.toUpperCase().charAt(0) != 'S') {
-                                System.out.println("Opcio incorrecta (Final o Sobreescriptura).");
-                            }
-                        } while (format.toUpperCase().charAt(0) != 'F' && format.toUpperCase().charAt(0) != 'S');
-                        
-                        ObjectOutputStream out = null;
-
-                        try {
-                            
-                            if (format.charAt(0) == 'F' && fitxer.exists()) {
-                                out = new AppendingObjectOutputStream(new FileOutputStream(fitxer, true));
-                                System.out.println("Afegint...");
-                            } else {
-                                out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fitxer)));
-                                alumnes = new ArrayList<>();
-                                System.out.println("Sobreescrivint...");
-                            }
-                                out.writeObject(alumne);
-                                alumnes.add(alumne);
-                           
-                        } catch (IOException ex) { System.out.println(ex.getMessage());
-                        } finally {
-                            if (out != null) {
-                                try {
-                                    out.close();
-                                } catch (IOException ex) { System.out.println(ex.getMessage());
-                                }
-                            }
-                        }
-                        break;
-                        
-                    default:
-                        System.out.println("Opcio invalida");
-                        break;
-                }
-            }
-
+            
         }
+        double perApro = aprovats*100/(double)total_num;
+        double perSusp = (total_num-aprovats)*100/(double)total_num;
+        
+        System.out.println("Total d'alumnes: "+total_num);
+        System.out.format("Percentatge d'alumnes aprovats: %f\n",perApro);
+        System.out.format("Percentatge d'alumnes suspesos: %f\n",perSusp);
+        System.out.println("Total de deus: "+nDeus);
+        System.out.println("Total de zeros: "+nZeros);
+        System.out.format("Nota mitja: %f\n",(notes_totals/(double)total_num));
+        
+        
+////Exercici 5 fitxers
+//        Scanner entrada = new Scanner(System.in);
+//
+//        File fitxer = new File("alumnes.dat");
+//
+//        List<Alumne> alumnes = new ArrayList<>();
+//        Iterator<Alumne> it;
+//
+//        Alumne alumne;
+//
+//        try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fitxer)));) {
+//            try {
+//                while (true) {
+//                    alumne = (Alumne) in.readObject();
+//                    alumnes.add(alumne);
+//                }
+//            } catch (EOFException e) {
+//            } catch (ClassNotFoundException e) {
+//                System.out.println("Error en la lectura del fitxer");
+//            }
+//        } catch (FileNotFoundException e) {
+//            System.out.println("No existeix el fitxer. Es crea de nou al inserir dades.");
+//        } finally {
+//            int op = -1;
+//            while (op != 0) {
+//                System.out.println("\nMENU D'OPCIONS");
+//                System.out.println("1. Llista els alumnes.");
+//                System.out.println("2. Insertar un nou alumne.");
+//                System.out.println("Apreta 0 per a sortir.\n");
+//                try {
+//                    op = Integer.valueOf(entrada.nextLine());
+//                    if (op > 2 || op < 0) {
+//                        throw new NumberFormatException();
+//                    }
+//                } catch (NumberFormatException e) {
+//                    op = -1;
+//                }
+//
+//                switch (op) {
+//                    case 0:
+//                        System.out.println("Adeu.");
+//                        break;
+//                    case 1:
+//                        it = alumnes.iterator();
+//                        int count = 0;
+//                        while (it.hasNext()) {
+//                            System.out.println(it.next().toString());
+//                            count++;
+//                        }
+//                        if (count == 0) {
+//                            System.out.println("No hi han alumnes.");
+//                        }
+//                        break;
+//                    case 2:
+//                        System.out.println("Introdueix les dades del alumne. (Linia en blanc per acabar)");
+//                        System.out.print("Nom: ");
+//                        String nom = entrada.nextLine();
+//                        System.out.print("Primer Cognom: ");
+//                        String cognom1 = entrada.nextLine();
+//                        System.out.print("Segon Cognom: ");
+//                        String cognom2 = entrada.nextLine();
+//                        Date data = Calendar.getInstance().getTime();
+//                        System.out.print("Email: ");
+//                        String email = entrada.nextLine();
+//                        alumne = new Alumne(nom, cognom1, cognom2, data, email);
+//                        // Evitar problemes
+//                        while (!entrada.nextLine().isEmpty()) {
+//                            email = entrada.nextLine();
+//                        }
+//
+//                        System.out.println("Introdueix els moduls cursats. (Linia en blanc per acabar)");
+//                        while (true) {
+//                            String next = entrada.nextLine();
+//                            if (next.isEmpty()) {
+//                                break;
+//                            }
+//                            alumne.setElement(next);
+//                        }
+//
+//                        System.out.println("Vols que es guardi al final o que ho sobreescrigui tot ? ( F / S) NOTA: Si no existeix es sobreescriurà de totes maneres.");
+//                        String format = null;
+//                        do {
+//                            format = entrada.nextLine();
+//                            if (format.toUpperCase().charAt(0) != 'F' && format.toUpperCase().charAt(0) != 'S') {
+//                                System.out.println("Opcio incorrecta (Final o Sobreescriptura).");
+//                            }
+//                        } while (format.toUpperCase().charAt(0) != 'F' && format.toUpperCase().charAt(0) != 'S');
+//
+//                        ObjectOutputStream out = null;
+//
+//                        try {
+//
+//                            if (format.charAt(0) == 'F' && fitxer.exists()) {
+//                                out = new AppendingObjectOutputStream(new FileOutputStream(fitxer, true));
+//                                System.out.println("Afegint...");
+//                            } else {
+//                                out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fitxer)));
+//                                alumnes = new ArrayList<>();
+//                                System.out.println("Sobreescrivint...");
+//                            }
+//                            out.writeObject(alumne);
+//                            alumnes.add(alumne);
+//
+//                        } catch (IOException ex) {
+//                            System.out.println(ex.getMessage());
+//                        } finally {
+//                            if (out != null) {
+//                                try {
+//                                    out.close();
+//                                } catch (IOException ex) {
+//                                    System.out.println(ex.getMessage());
+//                                }
+//                            }
+//                        }
+//                        break;
+//
+//                    default:
+//                        System.out.println("Opcio invalida");
+//                        break;
+//                }
+//            }
+//
+//        }
 
     }
 

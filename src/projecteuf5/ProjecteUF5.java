@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 //import java.util.Arrays;
 //import java.util.Iterator;
@@ -678,46 +679,46 @@ public class ProjecteUF5 {
 //            
 //        }
 ////Exercici 4 fitxers
-
-        Scanner entrada = new Scanner(new File("notes.txt"));
-        
-        entrada.useDelimiter("\\s\\p{Punct}?\\s");
-        
-        int total_num = 0;
-        int total = 0;
-        String valor;
-        int valorI;
-        int aprovats = 0;
-        int nDeus = 0;
-        int nZeros = 0;
-        int notes_totals = 0;
-        
-        while(entrada.hasNext()){
-            if(!entrada.hasNextInt()){
-                valor = entrada.next();
-                System.out.println("Nota incorrecta : "+valor);
-            }else{
-                valor = entrada.next();
-                valorI = Integer.valueOf(valor);
-                if(valorI >= 5) aprovats++;
-                if(valorI == 10) nDeus++;
-                if(valorI == 0) nZeros++;
-                notes_totals+=valorI;
-                total_num++;
-            }
-            
-        }
-        double perApro = aprovats*100/(double)total_num;
-        double perSusp = (total_num-aprovats)*100/(double)total_num;
-        
-        System.out.println("Total d'alumnes: "+total_num);
-        System.out.format("Percentatge d'alumnes aprovats: %f\n",perApro);
-        System.out.format("Percentatge d'alumnes suspesos: %f\n",perSusp);
-        System.out.println("Total de deus: "+nDeus);
-        System.out.println("Total de zeros: "+nZeros);
-        System.out.format("Nota mitja: %f\n",(notes_totals/(double)total_num));
-        
-        
+//
+//        Scanner entrada = new Scanner(new File("notes.txt"));
+//        
+//        entrada.useDelimiter("\\s\\p{Punct}?\\s");
+//        
+//        int total_num = 0;
+//        int total = 0;
+//        String valor;
+//        int valorI;
+//        int aprovats = 0;
+//        int nDeus = 0;
+//        int nZeros = 0;
+//        int notes_totals = 0;
+//        
+//        while(entrada.hasNext()){
+//            if(!entrada.hasNextInt()){
+//                valor = entrada.next();
+//                System.out.println("Nota incorrecta : "+valor);
+//            }else{
+//                valor = entrada.next();
+//                valorI = Integer.valueOf(valor);
+//                if(valorI >= 5) aprovats++;
+//                if(valorI == 10) nDeus++;
+//                if(valorI == 0) nZeros++;
+//                notes_totals+=valorI;
+//                total_num++;
+//            }
+//            
+//        }
+//        double perApro = aprovats*100/(double)total_num;
+//        double perSusp = (total_num-aprovats)*100/(double)total_num;
+//        
+//        System.out.println("Total d'alumnes: "+total_num);
+//        System.out.format("Percentatge d'alumnes aprovats: %f\n",perApro);
+//        System.out.format("Percentatge d'alumnes suspesos: %f\n",perSusp);
+//        System.out.println("Total de deus: "+nDeus);
+//        System.out.println("Total de zeros: "+nZeros);
+//        System.out.format("Nota mitja: %f\n",(notes_totals/(double)total_num));
+//        
+//        
 ////Exercici 5 fitxers
 //        Scanner entrada = new Scanner(System.in);
 //
@@ -841,6 +842,46 @@ public class ProjecteUF5 {
 //            }
 //
 //        }
+//Exercici 6 fitxers
+        // Declaració de variables
+        Random rn = new Random();
+
+        long offset = rn.nextInt();       //Desplaçament respecte l'inici del //fitxer de l'enter que volem escriure        
+
+        int secret = rn.nextInt(Integer.MAX_VALUE);    //Enter que volem escriure// al fitxer
+        File f = new File("nomirar.dat");        //Fitxer on volem escriure//aleatòriament
+        //Intentem obrir el fitxer en mode escriptura "rw" per accedir-lo 
+        //aleatòriament. Usem un try-with-resources        
+        try (RandomAccessFile fitxer = new RandomAccessFile(f, "rw")) {
+            //Ens situem a l'inici del fitxer
+            fitxer.seek(0);
+            //Escrivim el desplaçament on posarem l'enter
+            fitxer.writeLong(offset);
+            //Ens desplacem a la posició desitjada
+            fitxer.seek(offset);
+            //Escrivim l'enter secret
+            fitxer.writeInt(secret);
+            //Mostrem un missatge
+            System.out.println("Tot ha anat bé en l'escriptura.");
+        } catch (Exception e) {
+            //Si hi ha hagut alguna excepció mostrem un missatge
+            System.out.println("No s'ha pogut escriure l'enter secret!!");
+        }
+        try (RandomAccessFile fitxer = new RandomAccessFile(f, "r")) {
+            //Ens situem a l'inici del fitxer
+            fitxer.seek(0);
+            //Llegim el desplaçament on està l'enter
+            offset = fitxer.readLong();
+            //Ens desplacem a la posició desitjada
+            fitxer.seek(offset);
+            //Llegim l'enter secret
+            secret = fitxer.readInt();
+            //Mostrem un missatge
+            System.out.println("El valor secret és "+secret);
+        } catch (Exception e) {
+            //Si hi ha hagut alguna excepció mostrem un missatge
+            System.out.println("No s'ha pogut llegir l'enter secret!!");
+        }
 
     }
 
@@ -888,18 +929,18 @@ public class ProjecteUF5 {
 //
 //
 //}
-class AppendingObjectOutputStream extends ObjectOutputStream {
-
-    public AppendingObjectOutputStream(OutputStream out) throws IOException {
-
-        super(out);
-
-    }
-
-    @Override
-
-    protected void writeStreamHeader() throws IOException {
-        reset();
-    }
-
-}
+//class AppendingObjectOutputStream extends ObjectOutputStream {
+//
+//    public AppendingObjectOutputStream(OutputStream out) throws IOException {
+//
+//        super(out);
+//
+//    }
+//
+//    @Override
+//
+//    protected void writeStreamHeader() throws IOException {
+//        reset();
+//    }
+//
+//}
